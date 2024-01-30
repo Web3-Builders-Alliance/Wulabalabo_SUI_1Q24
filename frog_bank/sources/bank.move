@@ -18,7 +18,6 @@ module frog_bank::bank {
     struct UserBalance has copy, drop, store {user: address}
     struct AdminBalance has copy, drop, store {}    
 
-    const EUserNotFound: u64 = 1;
     const EInsufficientBalance: u64 = 2;
 
     const FEE: u128 = 5;
@@ -42,6 +41,10 @@ module frog_bank::bank {
         } else {
             0
         }
+    }
+
+    public fun admin_balance(self: &Bank): u64 {
+        balance::value(df::borrow<AdminBalance, Balance<SUI>>(&self.id, AdminBalance{}))
     }
 
     public fun deposit(self: &mut Bank, token: Coin<SUI>, ctx: &mut TxContext) {
@@ -79,15 +82,11 @@ module frog_bank::bank {
 
     public fun withdraw(self: &mut Bank, ctx: &mut TxContext): Coin<SUI> {
         let sender = tx_context::sender(ctx);
-        let user_key = UserBalance{user:sender};
-        assert!(df::exists_(&self.id,user_key), EUserNotFound);
-        let user_balance = df::borrow_mut<UserBalance, Balance<SUI>>(
-            &mut self.id, 
-            UserBalance{user:sender});
-        let value = balance::value(user_balance);
-        assert!(value > 0, EInsufficientBalance);
-
-        coin::take(user_balance,value,ctx)
+        if (df::exists_(&self.id, UserBalance { user: sender })) {
+            coin::from_balance(df::remove(&mut self.id, UserBalance { user: sender }), ctx)
+        } else {
+            coin::zero(ctx)
+        }
     }
 
     public fun claim(_: &OwnerCap, self: &mut Bank, ctx: &mut TxContext): Coin<SUI> {
