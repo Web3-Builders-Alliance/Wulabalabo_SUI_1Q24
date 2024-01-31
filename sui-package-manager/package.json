@@ -1,0 +1,23 @@
+{
+  "name": "sui-package-manager",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "scripts": {
+    "sui-publish": "node --loader ts-node/esm ./src/publish.ts",
+    "test": "node --loader ts-node/esm ./src/test.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@mysten/sui.js": "^0.49.1",
+    "@types/node": "^20.11.13",
+    "csv": "^6.3.6",
+    "dotenv": "^16.4.1"
+  }
+}

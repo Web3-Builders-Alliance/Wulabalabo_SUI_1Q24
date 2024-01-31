@@ -1,0 +1,18 @@
+[
+  {
+    "type": "package",
+    "id": "0x965169adcf1cbe417b7af94c15bd2108a8deab410bd052895384a28861e06632"
+  },
+  {
+    "type": "bank::Bank",
+    "id": "0xbcf309e0328f04cef165c11f0fef9b40cb4b6c3ca23e89a15bea8f62488ad7be"
+  },
+  {
+    "type": "bank::OwnerCap",
+    "id": "0xd867b548812d1a286dceb3494952151d8b839838136add2db6170b7830325d2d"
+  },
+  {
+    "type": "sui_dollar::CapWrapper",
+    "id": "0xf5fc97f0f9085418a48af8b8f44dc6a04ac3daac2b7369139ff9863cf5bf1579"
+  }
+]
