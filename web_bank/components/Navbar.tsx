@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center m-5">
           <div className="flex items-center justify-center w-10 h-10 mr-2 bg-yellow-400 rounded-full">
-            <Image src={"/vercel.svg"} alt="logo" width={30} height={30}/>
+            <Image src={"/next.svg"} alt="logo" width={"30"} height={"30"}/>
           </div>
           <span className="text-xl font-bold text-gray-800">Web Bank</span>
         </div>
