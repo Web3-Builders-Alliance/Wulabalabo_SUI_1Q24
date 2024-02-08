@@ -4,8 +4,8 @@
   "type": "module",
   "description": "",
   "scripts": {
-    "sui-publish": "node --loader ts-node/esm ./src/publish.ts",
-    "test": "node --loader ts-node/esm ./src/test.ts"
+    "sui-publish": "node --loader ts-node/esm ./src/publish.ts --network testnet",
+    "sui-publish-main": "node --loader ts-node/esm ./src/publish.ts --network mainnet"
   },
   "keywords": [],
   "author": "",

@@ -9,10 +9,14 @@ export interface IObjectInfo {
     id: string | undefined
 }
 
+export interface IConfigInfo {
+    network: string | undefined
+    packages: IObjectInfo[]
+}
+
 dotenv.config();
 
 export const keypair = Ed25519Keypair.fromSecretKey(fromHEX(process.env.PRIVATE_KEY!));
-export const client = new SuiClient({url: getFullnodeUrl('testnet')});
 
 export const getId = (type: string): string | undefined => {
     try {
